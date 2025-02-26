@@ -32,7 +32,7 @@ def geraracordo(response,forma,token,carteiratoken,empresa,devedor,data):
                             valor_texto = item.find("valor").text
                             
                             if valor_texto is not None:
-                                valor_float = corrigir_valor(valor_texto)  # Converte para float
+                                valor_float = corrigir_valor(valor_texto)  
 
                                 if codigo == "1":
                                     principal = valor_float
@@ -153,10 +153,10 @@ def geraracordo(response,forma,token,carteiratoken,empresa,devedor,data):
 
 def corrigir_valor(valor):
     """ Converte string numérica para float, corrigindo separadores """
-    if isinstance(valor, float):  # Se já for float, apenas retorna arredondado
+    if isinstance(valor, float): 
         return round(valor, 2)
-    elif isinstance(valor, str):  # Se for string, ajusta os separadores
-        valor_corrigido = valor.replace(".", "").replace(",", ".")  # Remove milhar e ajusta decimal
+    elif isinstance(valor, str):  
+        valor_corrigido = valor.replace(".", "").replace(",", ".")  
         return round(float(valor_corrigido), 2)
     else:
         raise ValueError("Tipo de valor inválido em corrigir_valor()")
